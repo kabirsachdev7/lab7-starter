@@ -62,30 +62,29 @@ function saveRecipesToStorage(recipes) {
  */
 function initFormHandler() {
   // B2. Get a reference to the <form> element
-  const formElement = document.querySelector('form');
+  let formElement = document.querySelector('form');
 
   // B3. Add an event listener for the 'submit' event
   formElement.addEventListener('submit', event => {
     event.preventDefault();
 
     // B4. Create a new FormData object from the <form> element reference
-    const formData = new FormData(formElement);
+    let formData = new FormData(formElement);
 
     // B5. Create an empty object (recipeObject) and populate it with form data
-    const recipeObject = {};
+    let recipeObject = {};
     formData.forEach((value, key) => {
       recipeObject[key] = value;
     });
 
     // B6. Create a new <recipe-card> element
-    const recipeCard = document.createElement('recipe-card');
+    let recipeCard = document.createElement('recipe-card');
 
     // B7. Add the recipeObject data to <recipe-card> using element.data
     recipeCard.data = recipeObject;
 
     // B8. Append this new <recipe-card> to <main>
-    const mainElement = document.querySelector('main');
-    mainElement.appendChild(recipeCard);
+    document.querySelector('main').appendChild(recipeCard);
 
     // B9. Get the recipes array from localStorage, add the new recipe to it, and save it back to localStorage
     let recipes = getRecipesFromStorage();
